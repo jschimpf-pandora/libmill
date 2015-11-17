@@ -39,13 +39,13 @@
 /*  www.gnu.org/software/libtool/manual/html_node/Updating-version-info.html  */
 
 /*  The current interface version. */
-#define MILL_VERSION_CURRENT 10
+#define MILL_VERSION_CURRENT 11
 
 /*  The latest revision of the current interface. */
-#define MILL_VERSION_REVISION 1
+#define MILL_VERSION_REVISION 0
 
 /*  How many past interface versions are still supported. */
-#define MILL_VERSION_AGE 0
+#define MILL_VERSION_AGE 1
 
 /******************************************************************************/
 /*  Symbol visibility                                                         */
@@ -267,12 +267,14 @@ MILL_EXPORT void *mill_choose_val(size_t sz);
 #define IPADDR_IPV6 2
 #define IPADDR_PREF_IPV4 3
 #define IPADDR_PREF_IPV6 4
+#define IPADDR_MAXSTRLEN 46
 
 typedef struct {char data[32];} ipaddr;
 
 MILL_EXPORT ipaddr iplocal(const char *name, int port, int mode);
 MILL_EXPORT ipaddr ipremote(const char *name, int port, int mode,
     int64_t deadline);
+MILL_EXPORT const char *ipaddrstr(ipaddr addr, char *ipstr);
 
 /******************************************************************************/
 /*  TCP library                                                               */
